@@ -1,0 +1,20 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container text-center">
+        <h1>ბლოგი</h1>
+        <p>დაწერილია {{ blogs.count }} ბლოგი</p>
+        {% for blog in blogs %}
+            <div class="blog" style="margin-bottom:50px">
+                <a href="{% url 'blog:detail' blog.id%}"><h2>{{ blog.title }}</h2></a>
+                {% if blog.date %}
+                    <strong> {{ blog.date|date:'M d'}} </strong>
+                {% endif %}
+                <p>{{ blog.description|truncatechars:100 }}</p>
+                {% if blog.image %}
+                    <img src="{{ blog.image.url }}" width="200" height="200">
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

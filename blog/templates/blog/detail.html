@@ -1,0 +1,14 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container text-center">
+        <h1>{{ blog.title }}</h1>
+        {% if blog.date %}
+            <p><strong> {{ blog.date|date:'M d, Y, l' }} </strong></p>
+        {% endif %}
+        {% if blog.image %}
+            <img src="{{ blog.image.url }}" width="500" height="500">
+        {% endif %}
+        <p>{{ blog.description }}</p>
+    </div>
+{% endblock %}
